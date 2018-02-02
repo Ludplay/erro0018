@@ -1,0 +1,52 @@
+<!--
+  Generated template for the CheckoutPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>checkout</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <div padding>
+        <ion-segment [(ngModel)]="paymentMethod">
+            <ion-segment-button value="Boleto">Boleto</ion-segment-button>
+            <ion-segment-button value="Credit">Cartão de Crédito</ion-segment-button>
+        </ion-segment>
+    </div>
+    
+    <div *ngIf="paymentMethod == 'Boleto'">
+        Área do Boleto
+    </div>
+    <div *ngIf="paymentMethod == 'Credit'">
+        Área do Cartão
+        
+        <ion-item>
+            <ion-label floating>Número do Cartão</ion-label>
+            <ion-input type="text" [(ngModel)]="creditCard.num"></ion-input>
+        </ion-item>        
+        <ion-item>
+            <ion-label floating>Código de Segurança</ion-label>
+            <ion-input type="text" [(ngModel)]="creditCard.cvv"></ion-input>
+        </ion-item>        
+        <ion-item>
+            <ion-label floating>Mês Expiração</ion-label>
+            <ion-input type="text" [(ngModel)]="creditCard.monthExp"></ion-input>
+        </ion-item>        
+        <ion-item>
+            <ion-label floating>Ano Expiração</ion-label>
+            <ion-input type="text" [(ngModel)]="creditCard.yearExp"></ion-input>
+        </ion-item>        
+    </div>
+    <button ion-button full (click)="doPayment()">Concluir Pagamento</button>
+    <br><br>
+    
+    {{paymentMethod}}
+    
+</ion-content>
